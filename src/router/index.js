@@ -121,7 +121,36 @@ export const constantRoutes = [
         meta: { title: 'Profile', icon: 'user', noCache: true }
       }
     ]
+  },
+  /* 我的路由 begin */
+  {
+    path: '/student',
+    component: Layout,
+    redirect: '/student',
+    name: '学生信息',
+    meta: { title: '学生信息', icon: 'user' },
+    children: [
+      {
+        path: 'profile', // 地址:http://localhost:9527/#/student/profile
+        component: () => import('@/views/home/student/index'),
+        name: 'student-profile',
+        meta: { title: '学生资料', icon: 'dashboard', affix: true }
+      },
+      {
+        path: 'score',
+        component: () => import('@/views/home/student/score'),
+        name: 'score-info',
+        meta: { title: '成绩信息', icon: 'dashboard', affix: true }
+      },
+      {
+        path: 'composition',
+        component: () => import('@/views/home/student/composition'),
+        name: 'composition',
+        meta: { title: '作品记录', icon: 'dashboard', affix: true }
+      }
+    ]
   }
+  /* 我的路由 end*/
 ]
 
 /**
