@@ -124,11 +124,11 @@ export const constantRoutes = [
   },
   /* 我的路由 begin */
   {
-    path: '/student',
+    path: '/student/info',
     component: Layout,
     redirect: '/student',
     name: '学生信息',
-    meta: { title: '学生信息', icon: 'user' },
+    meta: { title: '学生信息', icon: 'people' },
     children: [
       {
         path: 'profile', // 地址:http://localhost:9527/#/student/profile
@@ -147,6 +147,204 @@ export const constantRoutes = [
         component: () => import('@/views/home/student/composition'),
         name: 'composition',
         meta: { title: '作品记录', icon: 'dashboard', affix: true }
+      }
+    ]
+  },
+  {
+    path: '/student/class',
+    component: Layout,
+    redirect: '/class',
+    name: '班级信息',
+    meta: { title: '班级信息', icon: 'people' },
+    children: [
+      {
+        path: 'homework',
+        component: () => import('@/views/home/class/homework'),
+        name: 'homework',
+        meta: { title: '作业信息', icon: 'people' }
+      },
+      {
+        path: 'composition',
+        component: () => import('@/views/home/class/composition'),
+        name: 'composition',
+        meta: { title: '作品展评', icon: 'people' }
+      },
+      {
+        path: 'honor',
+        component: () => import('@/views/home/class/honor'),
+        name: 'honor',
+        meta: { title: '班级荣誉', icon: 'people' }
+      }
+    ]
+  },
+  {
+    path: '/student',
+    component: Layout,
+    redirect: '/notification',
+    name: '通知信息',
+    meta: { title: '通知信息', icon: 'people' },
+    children: [
+      {
+        path: 'notification',
+        component: () => import('@/views/home/notification/index'),
+        name: 'student-notification',
+        meta: { title: '通知信息', icon: 'people' }
+      }
+    ]
+  },
+  {
+    path: '/student',
+    component: Layout,
+    redirect: '/information',
+    name: '资讯信息',
+    meta: { title: '资讯信息', icon: 'people' },
+    children: [
+      {
+        path: 'information',
+        component: () => import('@/views/home/information/index'),
+        name: 'student-information',
+        meta: { title: '资讯信息', icon: 'people' }
+      }
+    ]
+  },
+  {
+    path: '/student/interaction',
+    component: Layout,
+    redirect: '/interaction',
+    name: '互动平台',
+    meta: { title: '互动平台', icon: 'people' },
+    children: [
+      {
+        path: 'ask-for-leave',
+        component: () => import('@/views/home/interaction/ask-for-leave'),
+        name: 'student-ask-for-leave',
+        meta: { title: '请假', icon: 'people' }
+      },
+      {
+        path: 'sign-in',
+        component: () => import('@/views/home/interaction/sign-in'),
+        name: 'student-sign-in',
+        meta: { title: '签到', icon: 'people' }
+      },
+      {
+        path: 'address-book',
+        component: () => import('@/views/home/interaction/address-boot'),
+        name: 'student-address-book',
+        meta: { title: '通讯录', icon: 'people' }
+      }
+    ]
+  },
+  {
+    path: '/teacher',
+    component: Layout,
+    redirect: '/teacher/class',
+    children: [
+      {
+        path: 'class',
+        component: () => import('@/views/teacher/class/index'),
+        name: 'Class-management',
+        meta: { title: '班级管理', icon: 'user' }
+      },
+      {
+        path: 'class/homework/publish/:id(\\d+)',
+        component: () => import('@/views/teacher/class/homework-publish'),
+        name: 'HomeworkPublish',
+        meta: { title: '作业发布', noCache: true, activeMenu: '/teacher/class' },
+        hidden: true
+      },
+      {
+        path: 'class/composition/:id(\\d+)',
+        component: () => import('@/views/teacher/class/composition'),
+        name: 'Composition',
+        meta: { title: '作品展评', noCache: true, activeMenu: '/teacher/class' },
+        hidden: true
+      },
+      {
+        path: 'class/honor/:id(\\d+)',
+        component: () => import('@/views/teacher/class/honor'),
+        name: 'Honor',
+        meta: { title: '班级荣誉', noCache: true, activeMenu: '/teacher/class' },
+        hidden: true
+      }
+    ]
+  },
+  {
+    path: '/teacher',
+    component: Layout,
+    redirect: '/teacher/student',
+    children: [
+      {
+        path: 'student',
+        component: () => import('@/views/teacher/student/index'),
+        name: 'Student-management',
+        meta: { title: '学生管理', icon: 'user' }
+      },
+      {
+        path: 'student/recorded/score/:id(\\d+)',
+        component: () => import('@/views/teacher/student/recorded-score'),
+        name: 'RecordedScore',
+        meta: { title: '录入成绩', noCache: true, activeMenu: '/teacher/student' },
+        hidden: true
+      },
+      {
+        path: 'student/school/performance/:id(\\d+)',
+        component: () => import('@/views/teacher/student/school-performance'),
+        name: 'SchoolPerformance',
+        meta: { title: '在校表现', noCache: true, activeMenu: '/teacher/student' },
+        hidden: true
+      }
+    ]
+  },
+  {
+    path: '/teacher',
+    component: Layout,
+    redirect: '/teacher/notification',
+    children: [
+      {
+        path: 'notification',
+        component: () => import('@/views/teacher/notification/index'),
+        name: 'Notification-management',
+        meta: { title: '通知管理', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/teacher',
+    component: Layout,
+    redirect: '/teacher/information',
+    children: [
+      {
+        path: 'information',
+        component: () => import('@/views/teacher/information/index'),
+        name: 'Information-management',
+        meta: { title: '资讯管理', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/teacher',
+    component: Layout,
+    redirect: '/teacher/interaction',
+    name: 'Interaction',
+    meta: { title: '互动平台', icon: 'user' },
+    children: [
+      {
+        path: 'ask-for-leave',
+        component: () => import('@/views/teacher/interaction/ask-for-leave'),
+        name: 'AskForLeave',
+        meta: { title: '请假管理', icon: 'user' }
+      },
+      {
+        path: 'sigh-in',
+        component: () => import('@/views/teacher/interaction/sign-in'),
+        name: 'SignIn',
+        meta: { title: '签到管理', icon: 'user' }
+      },
+      {
+        path: 'address-book',
+        component: () => import('@/views/teacher/interaction/address-book'),
+        name: 'AddressBook',
+        meta: { title: '班级通讯录', icon: 'user' }
       }
     ]
   }
